@@ -85,7 +85,7 @@
 	<script type="text/javascript">
 		const btn = document.querySelector("#start");
 		
-		const pathDegree = 35;
+		const pathDegree = 45;
 		const h = $(window).height();
 		const w = $(window).width();
 		const opposite = Math.abs(getTanFromDegrees(pathDegree) * h);
@@ -98,9 +98,9 @@
 		let fin = false;
 		const tl = gsap.timeline({paused: true});
 		const animation = {
-			duration: 1.5,
+			duration: 0.6,
 			ease: "Power1.out",
-			stagger: 0.3
+			stagger: 0.2
 		};
 		tl.to(gsap.utils.toArray('.layer').reverse(), {
 			"clip-path": clipPathC,
