@@ -10,6 +10,9 @@
 			margin: 0;
 			padding: 0;
 		}
+		body {
+			overflow: hidden;
+		}
 		.main {
 			width: 100%;
 			background-color: green;
@@ -21,13 +24,19 @@
 		.layer {
 			height: 100%;
 			width: 100%;
-			background: url('./a.png');
-			background-size: cover;
-			background-position: 0% 50%;
 			position: absolute;
-			background-repeat: no-repeat;
 			inset: 0;
 			overflow: hidden;
+		}
+		.image {
+			background-image: url('./a.png');
+			
+			height: 100%;
+			width: 100%;
+			
+			background-size: cover;
+			background-position: 0% 50%;
+			background-repeat: no-repeat;
 		}
 		img {
 			object-fit: cover;
@@ -35,11 +44,12 @@
 			height: 100%;
 		}
 		#start {
+			font-size: 25px;
 			position: absolute;
 			bottom: 5rem;
 			right: 5rem;
-			width: 5rem;
-			height: 2.5rem;
+			width: 80%;
+			height: 10%;
 		}
 	</style>
 </head>
@@ -48,11 +58,25 @@
 <body>
 	<div class="main">
 		<div class="layer">
+			<div class="image"></div>
 		</div>
+		
 		<div class="layer">
+			<div class="image"></div>
 		</div>
+		
 		<div class="layer">
+			<div class="image"></div>
 		</div>
+		
+		<div class="layer">
+			<div class="image"></div>
+		</div>
+		
+		<div class="layer">
+			<div class="image"></div>
+		</div>
+	
 		<button id="start" onclick="start()">start</button>
 	</div>
 	
@@ -62,14 +86,19 @@
 		const btn = document.querySelector("#start");
 		let fin = false;
 		const tl = gsap.timeline({paused: true});
-		
+		const animation = {
+			duration: 1,
+			ease: "Power1.out",
+			stagger: 0.3
+		};
 		tl.to(gsap.utils.toArray('.layer').reverse(), {
 			xPercent: 100,
-			duration: 1.5,
-			ease: "Power1.out",
-			stagger: 0.6,
-			backgroundPosition: "100% 50%",
+			...animation
 		})
+		.to(gsap.utils.toArray('.layer .image').reverse(), {
+			...animation,
+			backgroundPosition: "100% 50%",
+		}, "<")
 		
 		function start() {
 			console.log('hellow owrld');
