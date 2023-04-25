@@ -80,14 +80,14 @@
 		<button id="start" onclick="start()">play</button>
 	</div>
 	
-	
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js'></script>
 	<script type="text/javascript">
 		const btn = document.querySelector("#start");
 		
 		const pathDegree = 35;
-		const h = screen.height;
-		const w = screen.width;
+		const h = $(window).height();
+		const w = $(window).width();
 		const opposite = Math.abs(getTanFromDegrees(pathDegree) * h);
 		const clipPathA = `polygon(-${w}px 0%, 0px 0%, -${opposite}px 100%, -${opposite + w}px 100%)`; // left
 		const clipPathB = `polygon(0px 0%, ${w + opposite}px 0%, ${w}px 100%, -${opposite}px 100%)`; // center
